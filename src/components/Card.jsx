@@ -1,4 +1,10 @@
+import PropTypes from 'prop-types';
+
 export default function Card({ id, handleClick }) {
+  Card.propTypes = {
+    id: PropTypes.number,
+    handleClick: PropTypes.func,
+  };
   return (
     <div className="card" onClick={() => handleClick(id)}>
       <img

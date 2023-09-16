@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
 import generateRandomNumbers from './generateRandomNumbers';
 import Card from './components/Card.jsx';
@@ -30,10 +30,12 @@ function App() {
       if (selectedIDs.length > currentRecord) {
         setCurrentRecord(newSelectedIDs.length);
       }
-      console.log('score: ' + newSelectedIDs.length);
-      console.log('record: ' + currentRecord);
-      const newShuffledIDs = shuffleArray(picturesIDs);
-      setShuffeledPicturesIDs(newShuffledIDs);
+      if (selectedIDs.length === 12) {
+        restartGame();
+      } else {
+        const newShuffledIDs = shuffleArray(picturesIDs);
+        setShuffeledPicturesIDs(newShuffledIDs);
+      }
     }
   }
 
@@ -43,8 +45,16 @@ function App() {
 
   return (
     <>
-      <p>Current score: {selectedIDs.length}</p>
-      <p>High score: {currentRecord}</p>
+      <header>
+        <div>
+          <h1>Pokemon Memory Game</h1>
+          <p>Get points by clicking on an image you have not clicked before.</p>
+        </div>
+        <div>
+          <p>Current score: {selectedIDs.length}</p>
+          <p>High score: {currentRecord}</p>
+        </div>
+      </header>
       <div className="cards-container">{cards}</div>
     </>
   );
