@@ -5,8 +5,34 @@ body {
 }
 
 #root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cards-container img {
     height: 200px;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.cards-container .card {
+    background-color: rgb(152, 152, 152);
+    border-radius: 1rem;
+}
+
+.cards-container .card:hover {
+    transition: 0.2s;
+    cursor: pointer;
+    background-color: rgb(124, 124, 124);
+}
+
+.cards-container {
+    margin: 2rem 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
 }

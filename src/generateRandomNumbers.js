@@ -7,7 +7,6 @@ export default function generateRandomNumbers() {
       randomNumber = Math.floor(Math.random() * 200 + 1);
     } while (array.includes(randomNumber));
     array.push(randomNumber);
-  } while (array.length < 12);
-
+  } while (array.length < 8);
   return array;
 }
