@@ -7,8 +7,8 @@
 
 body {
     background: no-repeat linear-gradient(
-        rgba(0, 0, 0, 0.2), 
-        rgba(0, 0, 0, 0.2)
+        rgba(0, 0, 0, 0.3), 
+        rgba(0, 0, 0, 0.3)
       ), url("./assets/pokemon-background.png");
     background-position: 51.5% center;
 }
@@ -20,6 +20,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+header p {
+    font-weight: bold;
 }
 
 header > div {
@@ -46,18 +50,18 @@ header > div {
 }
 
 .cards-container .card {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.85);
     border-radius: 1rem;
 }
 
 .cards-container .card:hover {
     transition: 0.2s;
     cursor: pointer;
-    background-color: rgba(156, 156, 156, 0.85);
+    background-color: rgba(200, 154, 154, 0.92);
 }
 
 .cards-container {
-    margin: 2rem 0;
+    margin: auto;
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(4, 1fr);
