@@ -12,7 +12,8 @@ function App() {
   const [shuffeledPicturesIDs, setShuffeledPicturesIDs] = useState(
     shuffleArray(picturesIDs)
   );
-  const [popupVisible, setPopupVisible] = useState(true);
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [popupMessage, setPopupMessage] = useState(null);
 
   function restartGame() {
     const newPicturesIDs = generateRandomNumbers();
@@ -21,10 +22,12 @@ function App() {
     setPicturesIDs(newPicturesIDs);
     setShuffeledPicturesIDs(newShuffeledPictures);
     setSelectedIDs(newSelectedIDs);
+    setPopupVisible(true);
   }
 
   function handleClick(id) {
     if (selectedIDs.includes(id)) {
+      setPopupMessage('You clicked on the same picture twice..');
       restartGame();
     } else {
       const newSelectedIDs = selectedIDs;
@@ -33,6 +36,7 @@ function App() {
         setCurrentRecord(newSelectedIDs.length);
       }
       if (selectedIDs.length === 12) {
+        setPopupMessage('You guessed all 12 pictures!');
         restartGame();
       } else {
         const newShuffledIDs = shuffleArray(picturesIDs);
@@ -47,7 +51,9 @@ function App() {
 
   return (
     <>
-      {popupVisible && <Modal setPopupVisible={setPopupVisible} />}
+      {popupVisible && (
+        <Modal setPopupVisible={setPopupVisible} message={popupMessage} />
+      )}
       <header className={popupVisible ? 'dimmed' : null}>
         <div>
           <h1>Pokemon Memory Game</h1>

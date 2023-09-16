@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 import CloseIcon from '../assets/close-btn.svg';
 
-export default function Modal({ setPopupVisible }) {
+export default function Modal({ message, setPopupVisible }) {
   Modal.propTypes = {
+    message: PropTypes.string,
     setPopupVisible: PropTypes.func,
   };
   return (
     <div className="modal">
-      <button>
+      <button onClick={() => setPopupVisible(false)}>
         <img src={CloseIcon} alt="" />
       </button>
-      Modal
+      <p>{message}</p>
     </div>
   );
 }
