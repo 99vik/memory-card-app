@@ -3,6 +3,7 @@ import './App.css';
 import generateRandomNumbers from './generateRandomNumbers';
 import Card from './components/Card.jsx';
 import shuffleArray from './shuffleArray';
+import Modal from './components/Modal';
 
 function App() {
   const [picturesIDs, setPicturesIDs] = useState(generateRandomNumbers());
@@ -11,6 +12,7 @@ function App() {
   const [shuffeledPicturesIDs, setShuffeledPicturesIDs] = useState(
     shuffleArray(picturesIDs)
   );
+  const [popupVisible, setPopupVisible] = useState(true);
 
   function restartGame() {
     const newPicturesIDs = generateRandomNumbers();
@@ -45,7 +47,8 @@ function App() {
 
   return (
     <>
-      <header>
+      {popupVisible && <Modal setPopupVisible={setPopupVisible} />}
+      <header className={popupVisible ? 'dimmed' : null}>
         <div>
           <h1>Pokemon Memory Game</h1>
           <p>Get points by clicking on an image you have not clicked before.</p>
@@ -55,7 +58,11 @@ function App() {
           <p>High score: {currentRecord}</p>
         </div>
       </header>
-      <div className="cards-container">{cards}</div>
+      <div
+        className={popupVisible ? 'cards-container dimmed' : 'cards-container'}
+      >
+        {cards}
+      </div>
     </>
   );
 }
